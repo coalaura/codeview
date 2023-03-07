@@ -1,4 +1,4 @@
-module codeview
+module github.com/coalaura/codeview
 
 go 1.20
 
