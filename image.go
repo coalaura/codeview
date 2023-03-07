@@ -30,7 +30,11 @@ func (cv *CodeView) SetTitle(title string) {
 		title = title[:max] + "..."
 	}
 
-	cv.title = title + " - " + projectName
+	if projectName != "" {
+		title = title + " - " + projectName
+	}
+
+	cv.title = title
 }
 
 func (cv *CodeView) SetScale(scale float64) {
