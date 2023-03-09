@@ -24,10 +24,10 @@ func (cv *CodeView) SetText(text string) {
 }
 
 func (cv *CodeView) SetTitle(title string) {
-	max := 31 - len(projectName)
+	max := 32 - len(projectName)
 
 	if len(title) > max {
-		title = title[:max] + "..."
+		title = title[:max-3] + "..."
 	}
 
 	if projectName != "" {

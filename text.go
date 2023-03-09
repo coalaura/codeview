@@ -12,10 +12,10 @@ func _lines(text string) []string {
 
 	lines := strings.Split(text, "\n")
 
-	if len(lines) >= 16 {
-		more := len(lines) - 16
+	if len(lines) >= 13 {
+		more := len(lines) - 13
 
-		lines = lines[:16]
+		lines = lines[:13]
 
 		lines = append(lines, "... "+_fmtNumber(more)+" more")
 	}

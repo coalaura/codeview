@@ -36,7 +36,7 @@ func NewCodeView() *CodeView {
 	cv.SetText(text)
 	cv.SetTitle("Some Example Code")
 
-	cv.SetScale(2.0)
+	cv.SetScale(1.0)
 
 	err := cv.RenderToPng("test.png")
 	if err != nil {

@@ -43,8 +43,8 @@ func _render(text, title string, scale float64) (image.Image, error) {
 	mutedColor := color.RGBA{R: 70, G: 77, B: 83, A: 255}
 
 	pad := 25 * scale
-	fontSize := 14 * scale
-	lineHeight := 23 * scale
+	fontSize := 18 * scale
+	lineHeight := 28 * scale
 	logoY := 22 * scale
 
 	innerX := pad + (18 * scale)
@@ -109,7 +109,7 @@ func _render(text, title string, scale float64) (image.Image, error) {
 			line = line[:65]
 		}
 
-		if i == 16 {
+		if i == 13 {
 			gc.SetFillColor(mutedColor)
 		}
 
