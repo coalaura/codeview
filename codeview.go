@@ -105,8 +105,8 @@ func _render(text, title string, scale float64) (image.Image, error) {
 	for i, line := range lines {
 		y := innerY + float64(i)*lineHeight
 
-		if len(line) > 65 {
-			line = line[:65]
+		if len(line) > 50 {
+			line = line[:50]
 		}
 
 		if i == 13 {
