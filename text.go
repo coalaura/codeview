@@ -16,15 +16,6 @@ type Text struct {
 	Lines [][]TextEntry
 }
 
-func DefaultLine(line string) []TextEntry {
-	return []TextEntry{
-		{
-			Text:  line,
-			Color: ColorDefault,
-		},
-	}
-}
-
 func NewText(text string, lineParser func(string) []TextEntry) Text {
 	lines, more := _splitText(text)
 

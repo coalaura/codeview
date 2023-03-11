@@ -16,13 +16,18 @@ func main() {
 
 	// Set the logo (png bytes, required)
 	codeview.SetLogo([]byte("..."))
+	
+	// Set the color theme (optional)
+	codeview.SetTheme(codeview.DefaultTheme())
 
 	// Create a new code view
 	cv := codeview.NewCodeView()
 
-	// Set the code and title
+	// Set the title
 	cv.SetText(text)
-	cv.SetTitle("Some Example Code")
+
+	// Set the text (required)
+	cv.SetTitle(codeview.NewText("Some example code", Language("go")))
 
 	// Set the scale (optional)
 	cv.SetScale(2.0)

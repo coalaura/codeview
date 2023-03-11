@@ -34,10 +34,10 @@ func NewCodeView() *CodeView {
 	SetTheme(DefaultTheme())
 
 	cv := NewCodeView()
-	cv.SetText(NewText(text, DefaultLine))
+	cv.SetText(NewText(text, Language("go")))
 	cv.SetTitle("Some Example Code")
 
-	cv.SetScale(1.0)
+	cv.SetScale(2.0)
 
 	err := cv.RenderToPng("test.png")
 	if err != nil {
