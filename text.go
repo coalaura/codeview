@@ -51,12 +51,12 @@ func NewText(text string, lineParser func(string) []TextEntry) Text {
 	}
 
 	if more > 0 {
-		t.Lines[13] = []TextEntry{
+		t.Lines = append(t.Lines, []TextEntry{
 			{
 				Text:  "... " + _fmtNumber(more) + " more",
 				Color: ColorComment,
 			},
-		}
+		})
 	}
 
 	return t
@@ -86,10 +86,10 @@ func _splitText(text string) ([]string, int) {
 	lines := strings.Split(text, "\n")
 	more := 0
 
-	if len(lines) >= 13 {
+	if len(lines) > 14 {
 		more = len(lines) - 13
 
-		lines = lines[:14]
+		lines = lines[:13]
 	}
 
 	return lines, more
