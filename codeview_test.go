@@ -31,9 +31,10 @@ func NewCodeView() *CodeView {
 
 	SetProjectName("MyProject")
 	SetLogo(lg)
+	SetTheme(DefaultTheme())
 
 	cv := NewCodeView()
-	cv.SetText(text)
+	cv.SetText(NewText(text, DefaultLine))
 	cv.SetTitle("Some Example Code")
 
 	cv.SetScale(1.0)

@@ -8,7 +8,6 @@ import (
 	"github.com/llgcode/draw2d/draw2dimg"
 	"github.com/llgcode/draw2d/draw2dkit"
 	"image"
-	"image/color"
 	"image/png"
 	"math"
 )
@@ -19,6 +18,7 @@ var (
 
 	logo        []byte = nil
 	projectName        = ""
+	theme              = DefaultTheme()
 )
 
 // SetProjectName sets the project name to be used.
@@ -31,16 +31,16 @@ func SetLogo(png []byte) {
 	logo = png
 }
 
-func _render(text, title string, scale float64) (image.Image, error) {
+// SetTheme sets the theme to be used.
+func SetTheme(t Theme) {
+	theme = t
+}
+
+func _render(text Text, title string, scale float64) (image.Image, error) {
 	width := math.Floor(802 * scale)
 	height := math.Floor(528 * scale)
 
 	dest := image.NewRGBA(image.Rect(0, 0, int(width), int(height)))
-
-	background := color.RGBA{R: 30, G: 30, B: 46, A: 255}
-	foreground := color.RGBA{R: 38, G: 38, B: 55, A: 255}
-	textColor := color.RGBA{R: 173, G: 186, B: 199, A: 255}
-	mutedColor := color.RGBA{R: 70, G: 77, B: 83, A: 255}
 
 	pad := 25 * scale
 	fontSize := 18 * scale
@@ -52,12 +52,12 @@ func _render(text, title string, scale float64) (image.Image, error) {
 
 	gc := draw2dimg.NewGraphicContext(dest)
 
-	gc.SetFillColor(background)
+	gc.SetFillColor(theme.Background)
 	draw2dkit.Rectangle(gc, 0, 0, width, height)
 
 	gc.Fill()
 
-	gc.SetFillColor(foreground)
+	gc.SetFillColor(theme.Foreground)
 	draw2dkit.Rectangle(gc, pad, pad+(60*scale), width-pad, height-pad)
 
 	gc.Fill()
@@ -93,27 +93,21 @@ func _render(text, title string, scale float64) (image.Image, error) {
 
 	gc.SetFontData(fontData)
 
-	gc.SetFillColor(textColor)
+	gc.SetFillColor(theme.Default)
 	gc.SetFontSize(24 * scale)
 
 	gc.FillStringAt(title, pad+(48+16)*scale, logoY+(38*scale))
 
 	gc.SetFontSize(fontSize)
 
-	lines := _lines(text)
-
-	for i, line := range lines {
+	for i, line := range text.Lines {
 		y := innerY + float64(i)*lineHeight
+		x := innerX
 
-		if len(line) > 50 {
-			line = line[:50]
+		for _, token := range line {
+			gc.SetFillColor(token.GetColor(theme))
+			x += gc.FillStringAt(token.Text, x, y)
 		}
-
-		if i == 13 {
-			gc.SetFillColor(mutedColor)
-		}
-
-		gc.FillStringAt(line, innerX, y)
 	}
 
 	return dest, nil

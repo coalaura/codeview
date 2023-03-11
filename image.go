@@ -6,7 +6,7 @@ import (
 )
 
 type CodeView struct {
-	text  string
+	text  Text
 	title string
 	scale float64
 }
@@ -14,12 +14,12 @@ type CodeView struct {
 func NewCodeView() *CodeView {
 	return &CodeView{
 		scale: 1,
-		text:  "",
+		text:  Text{},
 		title: projectName,
 	}
 }
 
-func (cv *CodeView) SetText(text string) {
+func (cv *CodeView) SetText(text Text) {
 	cv.text = text
 }
 
