@@ -23,13 +23,13 @@ type Theme struct {
 
 func DefaultTheme() Theme {
 	return Theme{
-		Background: color.RGBA{R: 30, G: 30, B: 46, A: 255},
-		Foreground: color.RGBA{R: 38, G: 38, B: 55, A: 255},
+		Background: color.RGBA{R: 36, G: 39, B: 58, A: 255},
+		Foreground: color.RGBA{R: 54, G: 58, B: 79, A: 255},
 
-		Default: color.RGBA{R: 173, G: 186, B: 199, A: 255},
-		Token:   color.RGBA{R: 180, G: 94, B: 164, A: 255},
-		Value:   color.RGBA{R: 231, G: 206, B: 86, A: 255},
-		String:  color.RGBA{R: 79, G: 180, B: 215, A: 255},
-		Comment: color.RGBA{R: 70, G: 77, B: 83, A: 255},
+		Default: color.RGBA{R: 202, G: 211, B: 245, A: 255},
+		Token:   color.RGBA{R: 198, G: 160, B: 246, A: 255},
+		Value:   color.RGBA{R: 238, G: 212, B: 159, A: 255},
+		String:  color.RGBA{R: 166, G: 218, B: 149, A: 255},
+		Comment: color.RGBA{R: 110, G: 115, B: 141, A: 255},
 	}
 }
