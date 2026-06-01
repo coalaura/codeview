@@ -23,8 +23,8 @@ type Theme struct {
 
 func DefaultTheme() Theme {
 	return Theme{
-		Background: color.RGBA{R: 36, G: 39, B: 58, A: 255},
-		Foreground: color.RGBA{R: 54, G: 58, B: 79, A: 255},
+		Background: color.RGBA{R: 24, G: 25, B: 38, A: 255},
+		Foreground: color.RGBA{R: 36, G: 39, B: 58, A: 255},
 
 		Default: color.RGBA{R: 202, G: 211, B: 245, A: 255},
 		Token:   color.RGBA{R: 198, G: 160, B: 246, A: 255},
